@@ -21,8 +21,11 @@ COPY backend/app ./app
 COPY --from=frontend /frontend/dist ./static
 
 ENV PYTHONUNBUFFERED=1
-# Los hosts gratuitos (Render, Hugging Face Spaces, Fly…) inyectan $PORT.
-ENV PORT=8000
-EXPOSE 8000
+# Carpeta escribible para SQLite: los hosts gratuitos montan el código como
+# solo lectura y el contenedor no arranca como root.
+ENV NUTRICION_DB=/tmp/nutricion.db
+# Hugging Face Spaces usa 7860; Render, Fly y similares inyectan $PORT.
+ENV PORT=7860
+EXPOSE 7860
 
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
