@@ -1,0 +1,17 @@
+{
+  "name": "Mesa Común — gestión nutricional multiusuario",
+  "short_name": "Mesa Común",
+  "description": "Planifica el menú semanal de una familia, residencia o centro deportivo respetando las restricciones de cada persona y el presupuesto.",
+  "start_url": "/app/inicio",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3ecdc",
+  "theme_color": "#bc5b2a",
+  "lang": "es",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Fraunces Display";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/fraunces-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces Display";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/fraunces-500-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Work Sans Var";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/worksans.woff2") format("woff2");
+}
+
+@theme {
+  /* Paleta cálida terracota/crema, inspirada en los wireframes del TFG (R3). */
+  --color-ink: #2e2415;
+  --color-ink-soft: #5c4e38;
+  --color-ink-muted: #8a7c63;
+  --color-paper: #f3ecdc;
+  --color-paper-raised: #f9f3e7;
+  --color-paper-sunken: #e9dcc3;
+
+  --color-berry: #bc5b2a;
+  --color-berry-dark: #9c4a21;
+  --color-sage: #5c7a52;
+  --color-gold: #a9781e;
+
+  --color-chart-1: #2a78d6;
+  --color-chart-2: #eb6834;
+  --color-chart-3: #1baf7a;
+  --color-chart-4: #eda100;
+
+  --color-critical: #c24a3d;
+  --color-critical-bg: #fbe8e2;
+  --color-good: #3f7a3a;
+  --color-good-bg: #e7f2de;
+  --color-warn: #96701f;
+  --color-warn-bg: #f3e4c5;
+
+  --font-sans: "Work Sans Var", "Work Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces Display", ui-serif, Georgia, serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+}
+
+::selection {
+  @apply bg-berry text-white;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out both;
+}
