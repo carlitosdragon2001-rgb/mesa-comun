@@ -1,0 +1,12 @@
+# Lo que no debe entrar en la imagen: dependencias y artefactos locales que se
+# regeneran dentro del contenedor (si se copiaran, además de pesar, el
+# node_modules de Windows rompería el build de Linux).
+.git
+frontend/node_modules
+frontend/dist
+backend/venv
+backend/static
+backend/nutricion.db
+**/__pycache__
+*.pyc
+graphify-out
