@@ -87,6 +87,29 @@ Android con NFC activado. En iOS o en el portátil la app lo detecta y lo dice,
 y ofrece abrir la misma ficha desde una lista — y las pegatinas siguen
 funcionando igual, porque al acercarlas el sistema abre la URL en el navegador.
 
+## Despliegue
+
+`Dockerfile` construye una imagen única: una primera etapa con Node compila la
+interfaz (`npm run build`) y la segunda la copia a `backend/static`, donde la
+API la sirve junto a sus propios endpoints. Así hay **un solo servicio y un solo
+origen**: la interfaz llama a `/organizaciones` sin prefijo, no hay CORS y el
+certificado del hosting vale también para Web NFC en el móvil.
+
+`render.yaml` describe el servicio para [Render](https://render.com): en el
+panel, *New → Blueprint*, apuntar al repositorio y aplicar. El plan gratuito
+duerme el servicio tras 15 minutos sin visitas (el primer acceso tarda ~50 s en
+despertarlo) y su disco es efímero: al reiniciarse, la base de datos se vuelve a
+sembrar sola con los datos de demostración, de modo que los cambios hechos
+durante una sesión no sobreviven a un reinicio.
+
+Para probar el modo producción en local:
+
+```bash
+cd frontend && npm run build && cd ..
+cp -r frontend/dist backend/static        # Windows: xcopy /E /I frontend\dist backend\static
+cd backend && venv\Scripts\python.exe -m uvicorn app.main:app --port 8000
+```
+
 ## Tests
 
 ```bash
